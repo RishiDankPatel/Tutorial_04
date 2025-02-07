@@ -3,15 +3,18 @@ import numpy as np
 
 def deter(A):
 # Recursive computation of the determinant. Input: n X n array A. Out: determinant of A (float).
-    n =                                                 # Extract number of rows.
+    n = len(A[0])                                       # Extract number of rows.
     if n==2:                                            # For 2x2 matrix, use definition.
         # First catch the exceptional case n=2.
+        return A[0,0] * A[1,1] - A[0,1] * A[1,0]
         
     else:                                               # For larger matrices, compute recursively.
-        detA =                                          # Initialize the determinant.
+        detA = 0                                        # Initialize the determinant.
         for i in range(0,n):                            # Cofactor expansion.
-            B =                                         # Delete i-th row.
-            B =                                         # Delete first column.
+            B = np.copy(A)
+            B = np.delete(B,(i), axis=0)                # Delete i-th row.
+            B = np.delete(B,(0), axis=1)                # Delete first column.
+
             detA +=                                     # Recursive call.
     return detA
 
